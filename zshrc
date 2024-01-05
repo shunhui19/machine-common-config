@@ -132,7 +132,7 @@ export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_pr
 #export PATH=$HOME/bin
 
 # openai key
-export OPENAI_API_KEY=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
+export OPENAI_API_KEY=
 
 
 # starship
