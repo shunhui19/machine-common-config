@@ -137,3 +137,16 @@ export OPENAI_API_KEY=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
 
 # starship
 eval "$(starship init zsh)"
+
+# lazygit
+export XDG_CONFIG_HOME="$HOME/.config"
+alias lg='lazygit'
+
+# joshuto
+alias jo="joshuto"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH="/usr/local/opt/curl/bin:$PATH"
+
+# fixed two many open files
+ulimit -HSn 102400
