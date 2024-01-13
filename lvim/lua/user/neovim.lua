@@ -53,7 +53,7 @@ vim.opt.wildignore = {
 
 vim.opt.fillchars = {
     fold = " ",
-    eob = " ",  -- suppress ~ at EndOfBuffer
+    eob = " ", -- suppress ~ at EndOfBuffer
     diff = "╱", -- alternatives = ⣿ ░ ─
     msgsep = "‾",
     foldopen = "▾",
@@ -67,5 +67,9 @@ vim.opt.fillchars = {
     vertright = "┣",
     verthoriz = "╋",
 }
+
+-- NOTE: using neo-tree
+-- lvim.builtin.nvimtree.active = false
+
 
 return M

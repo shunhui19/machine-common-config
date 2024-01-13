@@ -10,6 +10,7 @@ lvim.log.level = "error"
 lvim.format_on_save = {
     enabled = true,
 }
+-- lvim.builtin.which_key.setup.plugins.presets.z = true
 
 -- Neovim
 -- =======================

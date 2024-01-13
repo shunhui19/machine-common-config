@@ -4,6 +4,7 @@ M.config = function()
 
 end
 
+-- core plugin setting
 lvim.builtin.treesitter.auto_install = true
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"

@@ -136,12 +136,160 @@ lvim.plugins = {
         "folke/todo-comments.nvim",
         event = "BufRead",
         config = function()
-            require("todo-comments").setup()
+            require("todo-comments").setup({
+                keywords = {
+                    OK = { icon = "✔ ", color = "ok" },
+                    ISH = { icon = "☛ ", color = "ish" },
+                    BAD = { icon = "✘ ", color = "bad" },
+                    TEST = { icon = "⚖ ", color = "test" },
+                    FIXJC = { icon = "⚖ ", color = "fixjc" },
+                    FIXJCO = { icon = "⚖ ", color = "fixjc" }
+                },
+                colors = {
+                    ok = { "#10B981" },
+                    ish = { "#e0e031" },
+                    bad = { "#f06981" },
+                    test = { "#f02244" },
+                    fixjc = { "#ff0000" },
+                },
+            })
         end,
     },
 
     "olexsmir/gopher.nvim",
     "leoluz/nvim-dap-go",
+
+    -- ctrlsf search strings and replace
+    {
+
+        'dyng/ctrlsf.vim',
+    },
+    -- Neo-tree
+    {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v2.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons",
+            "MunifTanjim/nui.nvim",
+        },
+        config = function()
+            require("neo-tree").setup({
+                close_if_last_window = true,
+                window = {
+                    width = 30,
+                },
+                buffers = {
+                    follow_current_file = true,
+                },
+                filesystem = {
+                    follow_current_file = true,
+                    filtered_items = {
+                        hide_dotfiles = false,
+                        hide_gitignored = false,
+                        hide_by_name = {
+                            "node_modules"
+                        },
+                        never_show = {
+                            ".DS_Store",
+                            "thumbs.db"
+                        },
+                    },
+                },
+            })
+        end
+    },
+
+    -- Markdown-preview
+    {
+        "iamcco/markdown-preview.nvim",
+        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+        build = "cd app && npm install",
+        ft = "markdown",
+        config = function()
+            vim.g.mkdp_auto_start = 1
+        end,
+    },
+
+    -- Codeium completion...
+    {
+        'Exafunction/codeium.vim'
+    },
+
+    -- lsp_signature
+    {
+        "ray-x/lsp_signature.nvim",
+        config = function()
+            require("user.plugins_config.lsp_signature").config()
+        end,
+        event = { "BufRead", "BufNew" },
+    },
+
+    -- twilight
+    -- {
+    --     "folke/twilight.nvim",
+    --     lazy = true,
+    --     config = function()
+    --         require("user.plugins_config.twilight").config()
+    --     end,
+    -- },
+
+    -- nvim-treesitter-context
+    {
+        "romgrk/nvim-treesitter-context",
+        lazy = true,
+        event = { "User FileOpened" },
+        config = function()
+            require("treesitter-context").setup({
+                enable = true,
+                throttle = true,
+                max_lines = 0,
+                patterns = {
+                    default = {
+                        "class",
+                        "function",
+                        "method",
+                    },
+                },
+            })
+        end,
+    },
+
+    -- noice
+    {
+        "folke/noice.nvim",
+        enabled = true,
+        lazy = true,
+        event = { "BufRead", "BufNewFile" },
+        dependencies = { "rcarriga/nvim-notify", "MunifTanjim/nui.nvim" },
+        config = function()
+            require("noice").setup({
+                lsp = {
+                    progress = {
+                        enabled = false,
+                    },
+                },
+                presets = {
+                    bottom_search = false,
+                    command_palette = true,
+                    long_message_to_split = true,
+                    inc_rename = false,
+                    lsp_doc_border = true,
+                },
+                messages = {
+                    enabled = true,
+                    view = "notify",
+                    view_error = "notify",
+                    view_warn = "notify",
+                    view_history = "messages",
+                    view_search = "virtualtext",
+                },
+                health = {
+                    checker = false,
+                },
+            })
+        end,
+    },
 }
 
 return M
