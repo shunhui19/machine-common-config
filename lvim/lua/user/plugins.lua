@@ -46,13 +46,17 @@ lvim.plugins = {
     -- Fidget
     {
         "j-hui/fidget.nvim",
-        tag = '*',
         config = function()
             require('fidget').setup()
         end
     },
     -- Rust-tools
-    "simrat39/rust-tools.nvim",
+    {
+        "simrat39/rust-tools.nvim",
+        config = function()
+            require("language.rust")
+        end
+    },
 
     -- Neoscroll
     {
@@ -77,11 +81,19 @@ lvim.plugins = {
 
     -- Crates
     {
-        'saecki/crates.nvim',
-        version = 'v0.3.0',
-        dependencies = { 'nvim-lua/plenary.nvim' },
+        "saecki/crates.nvim",
+        version = "v0.3.0",
+        dependencies = { "nvim-lua/plenary.nvim" },
         config = function()
-            require('crates').setup()
+            require("crates").setup {
+                null_ls = {
+                    enabled = true,
+                    name = "crates.nvim",
+                },
+                popup = {
+                    border = "rounded",
+                },
+            }
         end,
     },
 
@@ -251,6 +263,16 @@ lvim.plugins = {
                         "method",
                     },
                 },
+            })
+        end,
+    },
+
+    ---- gitsigns
+    {
+        "lewis6991/gitsigns.nvim",
+        config = function()
+            require("gitsigns").setup({
+                current_line_blame = true,
             })
         end,
     },

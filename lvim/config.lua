@@ -10,6 +10,7 @@ lvim.log.level = "error"
 lvim.format_on_save = {
     enabled = true,
 }
+lvim.reload_config_on_save = false
 -- lvim.builtin.which_key.setup.plugins.presets.z = true
 
 -- Neovim
@@ -35,3 +36,8 @@ require("user.theme").config()
 -- Lualine
 -- =======================
 require("user.lualine").config()
+
+
+-- Rust config
+-- =======================
+require("user.language.rust").config()
