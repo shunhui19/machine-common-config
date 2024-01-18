@@ -114,22 +114,22 @@ lvim.plugins = {
     },
 
     -- indent-blankline
-    {
-        "lukas-reineke/indent-blankline.nvim",
-        event = "BufRead",
-        config = function()
-            require("indent_blankline").setup({
-                -- for example, context is off by default, use this to turn it on
-                filetype_exclude = { "help", "terminal", "dashboard", "lspinfo" },
-                buftype_exclude = { "terminal", "dashboard", "nofile", "quickfix" },
-                show_trailing_blankline_indent = false,
-                show_first_indent_level = false,
-                show_current_context = true,
-                show_current_context_start = true,
-                show_end_of_line = true,
-            })
-        end,
-    },
+    -- {
+    --     "lukas-reineke/indent-blankline.nvim",
+    --     event = "BufRead",
+    --     config = function()
+    --         require("indent_blankline").setup({
+    --             -- for example, context is off by default, use this to turn it on
+    --             filetype_exclude = { "help", "terminal", "dashboard", "lspinfo" },
+    --             buftype_exclude = { "terminal", "dashboard", "nofile", "quickfix" },
+    --             show_trailing_blankline_indent = false,
+    --             show_first_indent_level = false,
+    --             show_current_context = true,
+    --             show_current_context_start = true,
+    --             show_end_of_line = true,
+    --         })
+    --     end,
+    -- },
 
     -- todo-comments
     {
@@ -226,13 +226,13 @@ lvim.plugins = {
     },
 
     -- twilight
-    -- {
-    --     "folke/twilight.nvim",
-    --     lazy = true,
-    --     config = function()
-    --         require("user.plugins_config.twilight").config()
-    --     end,
-    -- },
+    {
+        "folke/twilight.nvim",
+        lazy = true,
+        config = function()
+            require("user.plugins_config.twilight").config()
+        end,
+    },
 
     -- nvim-treesitter-context
     {
@@ -256,40 +256,40 @@ lvim.plugins = {
     },
 
     -- noice
-    {
-        "folke/noice.nvim",
-        enabled = true,
-        lazy = true,
-        event = { "BufRead", "BufNewFile" },
-        dependencies = { "rcarriga/nvim-notify", "MunifTanjim/nui.nvim" },
-        config = function()
-            require("noice").setup({
-                lsp = {
-                    progress = {
-                        enabled = false,
-                    },
-                },
-                presets = {
-                    bottom_search = false,
-                    command_palette = true,
-                    long_message_to_split = true,
-                    inc_rename = false,
-                    lsp_doc_border = true,
-                },
-                messages = {
-                    enabled = true,
-                    view = "notify",
-                    view_error = "notify",
-                    view_warn = "notify",
-                    view_history = "messages",
-                    view_search = "virtualtext",
-                },
-                health = {
-                    checker = false,
-                },
-            })
-        end,
-    },
+    -- {
+    --     "folke/noice.nvim",
+    --     enabled = true,
+    --     lazy = true,
+    --     event = { "BufRead", "BufNewFile" },
+    --     dependencies = { "rcarriga/nvim-notify", "MunifTanjim/nui.nvim" },
+    --     config = function()
+    --         require("noice").setup({
+    --             lsp = {
+    --                 progress = {
+    --                     enabled = false,
+    --                 },
+    --             },
+    --             presets = {
+    --                 bottom_search = false,
+    --                 command_palette = true,
+    --                 long_message_to_split = true,
+    --                 inc_rename = false,
+    --                 lsp_doc_border = true,
+    --             },
+    --             messages = {
+    --                 enabled = true,
+    --                 view = "notify",
+    --                 view_error = "notify",
+    --                 view_warn = "notify",
+    --                 view_history = "messages",
+    --                 view_search = "virtualtext",
+    --             },
+    --             health = {
+    --                 checker = false,
+    --             },
+    --         })
+    --     end,
+    -- },
 }
 
 return M
