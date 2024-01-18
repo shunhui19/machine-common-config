@@ -41,3 +41,10 @@ require("user.lualine").config()
 -- Rust config
 -- =======================
 require("user.language.rust").config()
+
+-- Go config
+-- =======================
+require("user.language.go").config()
+
+-- Python config
+require("user.language.python").config()
