@@ -4,12 +4,6 @@ M.config = function()
 
 end
 lvim.plugins = {
-    -- Catppuccin theme
-    {
-        "catppuccin/nvim",
-        name = "catppuccin",
-    },
-
     -- Tokyonight theme
     {
         "folke/tokyonight.nvim",
@@ -18,10 +12,11 @@ lvim.plugins = {
         opts = {},
     },
 
-    -- Trouble
+    -- Oceanic-next theme
     {
-        "folke/trouble.nvim",
-        cmd = "TroubleToggle",
+        "mhartington/oceanic-next",
+        priority = 1000,
+        lazy = lvim.colorscheme ~= "OceanicNext",
     },
 
     -- Hop
@@ -46,15 +41,9 @@ lvim.plugins = {
     -- Fidget
     {
         "j-hui/fidget.nvim",
+        version = "v1.0.0",
         config = function()
             require('fidget').setup()
-        end
-    },
-    -- Rust-tools
-    {
-        "simrat39/rust-tools.nvim",
-        config = function()
-            require("language.rust")
         end
     },
 
@@ -85,15 +74,7 @@ lvim.plugins = {
         version = "v0.3.0",
         dependencies = { "nvim-lua/plenary.nvim" },
         config = function()
-            require("crates").setup {
-                null_ls = {
-                    enabled = true,
-                    name = "crates.nvim",
-                },
-                popup = {
-                    border = "rounded",
-                },
-            }
+            require("crates").setup()
         end,
     },
 
@@ -125,108 +106,16 @@ lvim.plugins = {
         end,
     },
 
-    -- indent-blankline
-    -- {
-    --     "lukas-reineke/indent-blankline.nvim",
-    --     event = "BufRead",
-    --     config = function()
-    --         require("indent_blankline").setup({
-    --             -- for example, context is off by default, use this to turn it on
-    --             filetype_exclude = { "help", "terminal", "dashboard", "lspinfo" },
-    --             buftype_exclude = { "terminal", "dashboard", "nofile", "quickfix" },
-    --             show_trailing_blankline_indent = false,
-    --             show_first_indent_level = false,
-    --             show_current_context = true,
-    --             show_current_context_start = true,
-    --             show_end_of_line = true,
-    --         })
-    --     end,
-    -- },
-
-    -- todo-comments
-    {
-        "folke/todo-comments.nvim",
-        event = "BufRead",
-        config = function()
-            require("todo-comments").setup({
-                keywords = {
-                    OK = { icon = "✔ ", color = "ok" },
-                    ISH = { icon = "☛ ", color = "ish" },
-                    BAD = { icon = "✘ ", color = "bad" },
-                    TEST = { icon = "⚖ ", color = "test" },
-                    FIXJC = { icon = "⚖ ", color = "fixjc" },
-                    FIXJCO = { icon = "⚖ ", color = "fixjc" }
-                },
-                colors = {
-                    ok = { "#10B981" },
-                    ish = { "#e0e031" },
-                    bad = { "#f06981" },
-                    test = { "#f02244" },
-                    fixjc = { "#ff0000" },
-                },
-            })
-        end,
-    },
-
-    "olexsmir/gopher.nvim",
-    "leoluz/nvim-dap-go",
-
     -- ctrlsf search strings and replace
     {
 
         'dyng/ctrlsf.vim',
     },
-    -- Neo-tree
-    -- {
-    --     "nvim-neo-tree/neo-tree.nvim",
-    --     branch = "v2.x",
-    --     dependencies = {
-    --         "nvim-lua/plenary.nvim",
-    --         "nvim-tree/nvim-web-devicons",
-    --         "MunifTanjim/nui.nvim",
-    --     },
-    --     config = function()
-    --         require("neo-tree").setup({
-    --             close_if_last_window = true,
-    --             window = {
-    --                 width = 30,
-    --             },
-    --             buffers = {
-    --                 follow_current_file = true,
-    --             },
-    --             filesystem = {
-    --                 follow_current_file = true,
-    --                 filtered_items = {
-    --                     hide_dotfiles = false,
-    --                     hide_gitignored = false,
-    --                     hide_by_name = {
-    --                         "node_modules"
-    --                     },
-    --                     never_show = {
-    --                         ".DS_Store",
-    --                         "thumbs.db"
-    --                     },
-    --                 },
-    --             },
-    --         })
-    --     end
-    -- },
-
-    -- Markdown-preview
-    {
-        "iamcco/markdown-preview.nvim",
-        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-        build = "cd app && npm install",
-        ft = "markdown",
-        config = function()
-            vim.g.mkdp_auto_start = 1
-        end,
-    },
 
     -- Codeium completion...
-    {
-        'Exafunction/codeium.vim'
-    },
+    -- {
+    --     'Exafunction/codeium.vim'
+    -- },
 
     -- lsp_signature
     {
@@ -237,47 +126,7 @@ lvim.plugins = {
         event = { "BufRead", "BufNew" },
     },
 
-    -- twilight
-    {
-        "folke/twilight.nvim",
-        lazy = true,
-        config = function()
-            require("user.plugins_config.twilight").config()
-        end,
-    },
-
-    -- nvim-treesitter-context
-    {
-        "romgrk/nvim-treesitter-context",
-        lazy = true,
-        event = { "User FileOpened" },
-        config = function()
-            require("treesitter-context").setup({
-                enable = true,
-                throttle = true,
-                max_lines = 0,
-                patterns = {
-                    default = {
-                        "class",
-                        "function",
-                        "method",
-                    },
-                },
-            })
-        end,
-    },
-
-    ---- gitsigns
-    {
-        "lewis6991/gitsigns.nvim",
-        config = function()
-            require("gitsigns").setup({
-                current_line_blame = true,
-            })
-        end,
-    },
-
-    -- noice
+    -- -- noice
     -- {
     --     "folke/noice.nvim",
     --     enabled = true,
@@ -312,6 +161,55 @@ lvim.plugins = {
     --         })
     --     end,
     -- },
+
+    -- Rust-tools
+    {
+        "simrat39/rust-tools.nvim",
+        config = function()
+            require("language.rust")
+        end
+    },
+
+    -- Go-tools
+    {
+        "olexsmir/gopher.nvim",
+        "leoluz/nvim-dap-go",
+        config = function()
+            require("language.go")
+        end
+    },
+
+    -- Marks
+    {
+        "chentoast/marks.nvim",
+        lazy = true,
+        event = { "User FileOpened" },
+        config = function()
+            require("marks").setup({
+                default_mappings = true,
+                -- builtin_marks = { ".", "<", ">", "^" },
+                cyclic = true,
+                force_write_shada = false,
+                refresh_interval = 250,
+                sign_priority = { lower = 10, upper = 15, builtin = 8, bookmark = 20 },
+                excluded_filetypes = {
+                    "qf",
+                    "NvimTree",
+                    "toggleterm",
+                    "TelescopePrompt",
+                    "alpha",
+                    "netrw",
+                },
+                bookmark_0 = {
+                    -- sign = "",
+                    sign = "⚑",
+                    virt_text = "hello world",
+                    annotate = false,
+                },
+                mappings = {},
+            })
+        end,
+    },
 }
 
 return M

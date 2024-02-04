@@ -54,6 +54,8 @@ require("catppuccin").setup({
 })
 
 
-lvim.colorscheme = "catppuccin-macchiato" --catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
+-- lvim.colorscheme = "catppuccin-macchiato" --catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
+-- lvim.colorscheme = "tokyonight-storm" --tokyonight-storm, tokyonight-night, tokyonight-day, tokyonight-moon
+-- lvim.colorscheme = "OceanicNext"
 
 return M

@@ -24,4 +24,14 @@ lvim.builtin.which_key.mappings["t"] = {
     w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics" },
 }
 
+-- Marks
+-- =======================
+lvim.builtin.which_key.mappings["m"] = {
+    name = "+Marks",
+    a = { "<cmd>MarksListAll<CR>", "Show All Marks" },
+    b = { "<cmd>MarksListBuf<CR>", "Show Marks in Buffer" },
+    g = { "<cmd>MarksListGlobal<CR>", "Show Marks Global" },
+}
+
+
 return M

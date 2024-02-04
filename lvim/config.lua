@@ -3,48 +3,32 @@
 -- Forum: https://www.reddit.com/r/lunarvim/
 -- Discord: https://discord.com/invite/Xb9B4Ny
 
--- Neovim
+-- lvim
 -- =======================
 lvim.leader = ","
 lvim.log.level = "error"
 lvim.format_on_save = {
     enabled = true,
 }
-lvim.reload_config_on_save = false
--- lvim.builtin.which_key.setup.plugins.presets.z = true
+lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
+lvim.colorscheme = "OceanicNext"
 
--- Neovim
+-- neovim
 -- =======================
 require("user.neovim").config()
 
--- Builtin
--- =======================
-require("user.builtin").config()
-
--- Additional plugins
+-- plugins
 -- =======================
 require("user.plugins").config()
 
--- Additional keybindings
+-- keybindings
 -- =======================
 require("user.keybindings").config()
 
--- Theme
+-- theme
 -- =======================
 require("user.theme").config()
 
--- Lualine
+-- lualine
 -- =======================
 require("user.lualine").config()
-
-
--- Rust config
--- =======================
-require("user.language.rust").config()
-
--- Go config
--- =======================
-require("user.language.go").config()
-
--- Python config
-require("user.language.python").config()
