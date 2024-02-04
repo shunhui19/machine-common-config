@@ -54,6 +54,6 @@ require("catppuccin").setup({
 })
 
 
-lvim.colorscheme = "catppuccin-macchiato" --catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
+-- lvim.colorscheme = "catppuccin-macchiato" --catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
 
 return M
