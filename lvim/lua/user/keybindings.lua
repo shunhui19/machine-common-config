@@ -33,5 +33,22 @@ lvim.builtin.which_key.mappings["m"] = {
     g = { "<cmd>MarksListGlobal<CR>", "Show Marks Global" },
 }
 
+-- Persistence
+-- =======================
+lvim.builtin.which_key.mappings["a"] = {
+    name = "+Persistence",
+    c = { "<cmd>lua require('persistence').load()<cr>", "Restore last session for current dir" },
+    l = { "<cmd>lua require('persistence').load({ last = true })<cr>", "Restore last session" },
+    q = { "<cmd>lua require('persistence').stop()<cr>", "Quit without saving session" },
+}
+
+-- Symbols-outline
+-- =======================
+lvim.builtin.which_key.mappings["o"] = {
+    name = "Symbols-outline",
+    o = { "<cmd>SymbolsOutline<CR>", "Open Symbols Outline" },
+    c = { "<cmd>SymbolsOutlineClose<CR>", "Close Symbols Outline" },
+}
+
 
 return M

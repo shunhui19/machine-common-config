@@ -33,6 +33,8 @@ lvim.plugins = {
     -- SymbolsOutline
     {
         "simrat39/symbols-outline.nvim",
+        lazy = true,
+        cmd = { "SymbolsOutline", "SymbolsOutlineOpen", "SymbolsOutlineClose" },
         config = function()
             require('symbols-outline').setup()
         end
@@ -110,6 +112,7 @@ lvim.plugins = {
     {
 
         'dyng/ctrlsf.vim',
+        lazy = true,
     },
 
     -- Codeium completion...
@@ -210,6 +213,49 @@ lvim.plugins = {
             })
         end,
     },
+
+    -- Rainbow
+    {
+        "HiPhish/nvim-ts-rainbow2",
+        -- Bracket pair rainbow colorize
+        lazy = true,
+        event = { "User FileOpened" },
+    },
+
+    -- Surround
+    {
+        "kylechui/nvim-surround",
+        lazy = true,
+        keys = { "cs", "ds", "ys" },
+        config = function()
+            require("nvim-surround").setup({})
+        end,
+    },
+
+    -- Persistence
+    {
+        "folke/persistence.nvim",
+        -- Restore last session of current dir
+        lazy = true,
+        event = "BufReadPre", -- this will only start session saving when an actual file was opened
+        config = function()
+            require("persistence").setup({
+                dir = vim.fn.expand(vim.fn.stdpath("config") .. "/session/"),
+                options = { "buffers", "curdir", "tabpages", "winsize" },
+                pre_save = nil,
+            })
+        end,
+    },
+
+    -- Colorful-winsep
+    {
+        "nvim-zh/colorful-winsep.nvim",
+        lazy = true,
+        event = "WinNew",
+        config = function()
+            require("colorful-winsep").setup()
+        end,
+    }
 }
 
 return M
