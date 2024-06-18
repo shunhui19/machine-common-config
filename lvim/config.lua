@@ -13,47 +13,23 @@ lvim.format_on_save = {
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 lvim.colorscheme = "OceanicNext"
 
--- lualine
--- =======================
-lvim.builtin.lualine.style = "lvim"
--- lvim.builtin.lualine.options.theme = "gruvbox"
--- local components = require("lvim.core.lualine.components")
--- local function diff_source()
---     local gitsigns = vim.b.gitsigns_status_dict
---     if gitsigns then
---         return {
---             added = gitsigns.added,
---             modified = gitsigns.changed,
---             removed = gitsigns.removed
---         }
---     end
--- end
-lvim.builtin.lualine.sections.lualine_a = { 'mode', 'location' }
-lvim.builtin.lualine.sections.lualine_b = { 'branch', 'diff' }
-lvim.builtin.lualine.sections.lualine_c = {
-    {
-        function()
-            return "  " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-        end,
-    },
-}
-
 -- neovim
 -- =======================
 require("user.neovim").config()
 
+-- lualine
+-- =======================
+require("user.lualine").config()
+
 -- plugins
 -- =======================
 require("user.plugins").config()
+lvim.builtin.treesitter.rainbow.enable = true
 
 -- keybindings
 -- =======================
 require("user.keybindings").config()
 
--- theme
+-- gurzr
 -- =======================
 require("user.theme").config()
-
--- lualine
--- =======================
-require("user.lualine").config()

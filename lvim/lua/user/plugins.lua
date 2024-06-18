@@ -40,6 +40,26 @@ lvim.plugins = {
         end
     },
 
+    -- goto_preview
+    {
+        "rmagatti/goto-preview",
+        config = function()
+            require('goto-preview').setup {
+                width = 120,              -- Width of the floating window
+                height = 25,              -- Height of the floating window
+                default_mappings = false, -- Bind default mappings
+                debug = false,            -- Print debug information
+                opacity = nil,            -- 0-100 opacity level of the floating window where 100 is fully transparent.
+                post_open_hook = nil,     -- A function taking two arguments, a buffer and a window to be ran as a hook.
+                -- You can use "default_mappings = true" setup option
+                -- Or explicitly set keybindings
+                vim.cmd("nnoremap gpd <cmd>lua require('goto-preview').goto_preview_definition()<CR>"),
+                vim.cmd("nnoremap gpi <cmd>lua require('goto-preview').goto_preview_implementation()<CR>"),
+                vim.cmd("nnoremap gP <cmd>lua require('goto-preview').close_all_win()<CR>"),
+            }
+        end
+    },
+
     -- Fidget
     {
         "j-hui/fidget.nvim",
@@ -247,6 +267,37 @@ lvim.plugins = {
         end,
     },
 
+    -- Windows
+    {
+        "anuvyklack/windows.nvim",
+        lazy = true,
+        cmd = { "WindowsMaximize", "WindowsMaximizeVertically", "WindowsMaximizeHorizontally", "WindowsEqualize" },
+        dependencies = {
+            "anuvyklack/middleclass",
+        },
+        config = function()
+            require("windows").setup({
+                autowidth = {
+                    enable = false,
+                },
+                ignore = {
+                    buftype = { "quickfix" },
+                    filetype = {
+                        "NvimTree",
+                        "neo-tree",
+                        "undotree",
+                        "gundo",
+                        "qf",
+                        "toggleterm",
+                        "TelescopePrompt",
+                        "alpha",
+                        "netrw",
+                    },
+                },
+            })
+        end,
+    },
+
     -- Colorful-winsep
     {
         "nvim-zh/colorful-winsep.nvim",
@@ -255,7 +306,7 @@ lvim.plugins = {
         config = function()
             require("colorful-winsep").setup()
         end,
-    }
+    },
 }
 
 return M
